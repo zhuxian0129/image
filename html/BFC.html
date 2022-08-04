@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #box {
+    border: 1px solid rgb(161, 235, 101);
+    padding: 20px;
+  }
+
+  .box1 {
+    background-color: aqua;
+    height: 100px;
+    width: 300px;
+    margin-bottom: 50px;
+  }
+
+  .box2 {
+    background-color: antiquewhite;
+    height: 50px;
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  .container {
+    margin-top: 50px;
+    background-color: orange;
+    position: relative;
+    height: 300px;
+  }
+
+  .item {
+    width: 400px;
+    height: 200px;
+    border: 1px solid gray;
+    /* float: left; */
+    background-color: #f00;
+    position: absolute;
+  }
+
+  .clear-fix::after {
+    content: '';
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+  }
+</style>
+
+<body>
+  <!-- BFC: block formatting context -->
+  <!-- 块级元素布局 属于 BFC中的布局 -->
+  <!-- 行级元素的布局属于 IFC中的布局 -->
+  <!-- 形成BFC的条件：
+        1. 根元素 html
+        2. 浮动元素
+        3. 绝对定位元素
+        4. 行内块元素
+        5. 表格单元格，表格标题
+        6. 匿名表格单元格元素
+        7. overflow 属性值不为 visible
+        8. 弹性元素
+        9. 网格元素
+   -->
+  <!-- BFC描述：
+          在BFC中，box会在垂直方向上一个挨着一个排布
+          垂直方向的间距由margin属性决定
+          在同一个BFC中，相邻两个box之间的margin会折叠（collapse）
+          在BFC中，每个元素的左边缘挨着包含块的左边缘
+   -->
+  <!-- BFC的高度是auto的情况下，是如下方法计算高度
+          1.如果只有inline-level，是行高的顶部和底部的距离
+          2. 如果有block-level，是由最底层的块上边缘和最底层块盒子的下边缘之间的距离
+          3. 如果有绝对定位，将被忽略
+          4. 如果有浮动元素，那么对增加高度以包含这些浮动元素的下边缘 
+  -->
+  <!-- BFC作用
+          解决折叠问题（如果我们让两个box是不同的BFC，那么就可以解决折叠问题）
+          解决浮动高度塌陷问题-->
+
+  <div id="box">
+    <!-- box1,box2 同属于一个BFC，导致margin 折叠 -->
+    <div style="overflow: hidden">
+      <div class="box1"></div>
+    </div>
+    <!-- <div class="box1"></div> -->
+    <div class="box2"></div>
+  </div>
+  <div class="container clear-fix">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <div>hhhh</div>
+</body>
+<script>
+</script>
+
+</html>

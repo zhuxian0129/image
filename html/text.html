@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Document</title>
+</head>
+<style>
+  .test1{
+    width: 50px;
+    height: 50px;
+    background-color: aquamarine;
+    margin-top: 20px;
+    display: none;
+  }
+
+  .test2{
+    width: 50px;
+    height: 50px;
+    background-color: aquamarine;
+    margin-top: 20px;
+    visibility: hidden;
+  }
+
+  .test3{
+    width: 50px;
+    height: 50px;
+    background-color: aquamarine;
+    margin-top: 20px;
+    opacity: 0;
+  }
+</style>
+
+<body>
+  <div><a href="/storage.html" target="_blank">点我</a></div>
+  <button>滴滴</button>
+  <img src="https://assets.hongkiat.com/uploads/webp-guide/animatedgif-original.webp" alt="" srcset="">
+  <div class="test1">
+    <span>1</span>
+  </div>
+  <div class="test2">
+    <span>2</span>
+  </div>
+  <div class="test3">
+    <span>3</span>
+  </div>
+</body>
+
+<script>
+  localStorage.setItem('hah', 'xixi')
+  const btn = document.querySelector('button')
+  // const img = document.querySelector('img')
+  btn.onclick = function(){
+    localStorage.setItem('haha', 12345)
+  }
+  /* img.onload = function(e){
+    console.log(e)
+  }
+  img.onerror = function(e){
+    console.log('error',e)
+  } */
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #box{
+    background-color: aquamarine;
+    /* height: 30px; */
+    /* overflow: hidden; */
+    /* zoom: 1; 为了ie兼容 */
+  }
+  #box::after{
+    content: '';
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  .box-item{
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: blueviolet;
+    margin: 20px;
+    float: left;
+    font-size: 11px;
+    transform: scale(0.8);
+  }
+</style>
+<body>
+  <div id="box">
+    <div class="box-item">111</div>
+    <div class="box-item">222</div>
+    <div class="box-item">333</div>
+    <div class="box-item">444</div>
+  </div>
+  <div>xixiix</div>
+</body>
+</html>
