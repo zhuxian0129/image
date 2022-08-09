@@ -45,8 +45,6 @@ replace：replace 不会留下history记录，所以指定replace的情况下，
 
 active-class：当<router-link>对应的路由匹配成功时，会自动给当前元素设置一个router-link-active的class，设置active-class可以修改默认的名称
 
-> 
-
 
 
 ### 路由代码跳转
@@ -61,6 +59,8 @@ this.$router.replace({
 	query: ''
 })
 ```
+
+
 
 ### 动态路由跳转
 
@@ -84,6 +84,8 @@ computed: {
 > >
 > > route：当前页面的路由信息，获取到的是一个对象，也为router的一个子项
 
+
+
 ###  路由懒加载
 
 当打包构建应用时，JavaScript包会变得非常大，影响页面加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才会加载对应组件，这样会更加高效。
@@ -101,11 +103,15 @@ const About = resolve => require(['../components/About.vue'], resolve);
 const Home = () => import('../components/Home.vue')
 ```
 
+
+
 ### 参数传递
 
 params：路径参数
 
 query：问号后面拼接的内容
+
+
 
 ### 导航守卫 
 
@@ -117,7 +123,7 @@ query：问号后面拼接的内容
 
 * next：为一个函数，可传递一个路径对象作为参数。<font color='#f00'>在任何情况下，确保<code>next</code>在给定的导航守卫中都被严格调用一次。它可以出现多余一次，但是只能在所以逻辑路径都不重叠的情况下，否则钩子永远都不会解析或报错。</font>
 
-1. 全局前置守卫
+1. 全局前置守卫 -- beforeEach
 
    ```js
    router.beforeEach((to,from,next) => {
@@ -130,7 +136,7 @@ query：问号后面拼接的内容
    - false：取消当前的导航。如果浏览器的URL改变了，那么URL地址会重置到from路由对应的地址
    - 一个路由地址：通过一个路由地址跳转到一个不同的地址，就像调用<code>router.push()</code>一样，可以设置诸如<code>replace: true</code>或<code>name: 'home'</code>之类的配置。当前的导航被中断，然后进行一个新的导航。
 
-2. 全局解析守卫
+2. 全局解析守卫 -- beforeResolve
 
    ```js
    router.beforeResolve((to, from, next) => {
@@ -140,7 +146,7 @@ query：问号后面拼接的内容
 
    <code>router.beforeResolve</code>是获取数据或执行任何其他操作的理想位置。
 
-3. 全局后置钩子
+3. 全局后置钩子 -- afterEach
 
    和守卫不同，不会接受<code>next</code>函数，也不会改变导航本身
 
@@ -152,7 +158,7 @@ query：问号后面拼接的内容
 
    
 
-4. 路由独享的守卫
+4. 路由独享的守卫 -- beforeEnter
 
    直接在路由配置上定义的守卫<code>beforeEnter</code>：
 
@@ -207,4 +213,14 @@ const UserDetails  = {
 ### 完成的导航解析流程
 
 1. 导航被触发。
-2. 在失活的组件里面调用<code>beforeRouteLeave</code>
+2. 在失活的组件里面调用<code>beforeRouteLeave</code>守卫。
+3. 调用全局的<code>beforeEach</code>守卫。
+4. 在重用的组件里调用<code>beforeRouteUpdate</code>守卫。
+5. 在路由配置里调用<code>beforeEnter</code>。
+6. 解析异步路由组件。
+7. 在被激活的组件里调用<code>beforeResolve</code>。
+8. 调用全局的<code>beforeResolve</code>守卫。
+9. 导航被确定。
+10. 调用全局的<code>afterEach</code>钩子。
+11. 触发DOM更新。
+12. 调用<code>beforeRouteEnter</code>守卫中传给<code>next</code>的回调函数，创建好的组件实例会作为回调函数的参数传入。
