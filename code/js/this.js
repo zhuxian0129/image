@@ -29,4 +29,21 @@ identify.call(me) // this指向 me，打印 KYLE
 identify.call(you) // this指向 you，打印 READER
 
 speak.call(me) // KYLE
-speak.call(you) // READER
+speak.call(you); // READER
+
+function foo() {
+  console.log(this.a)
+}
+
+var a = 2;
+var o = { a: 3, foo }
+var p = { a: 4 }
+o.foo(); // 3
+(p.foo = o.foo)(); // 2
+
+
+var myObject = {}
+
+// 原型链
+myObject.prototype.foo = 1
+// 原型链上层
