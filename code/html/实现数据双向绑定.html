@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<h1></h1>
+<button>点击</button>
+</body>
+<script>
+    const input = document.querySelector('input')
+    const h1 = document.querySelector('h1')
+    const btn = document.querySelector('button')
+    let data = { text: '' }
+    input.addEventListener('input', function (e){
+        dataProxy.text = e.target.value
+    })
+    btn.onclick = function (){
+        dataProxy.text = '你好'
+    }
+    /*Object.defineProperty(data, 'text', {
+        get(){
+            return data.text
+        },
+        set(newValue){
+            h1.innerText = newValue
+           input.value = newValue
+        }
+    })*/
+    function bindValue(target, prop){
+        h1.innerText = target[prop]
+        input.value = target[prop]
+    }
+    bindValue(data, 'text', {
+        [h1.innerText]: h1.innerText,
+        [input.value]: input.value
+    })
+    const dataProxy = new Proxy(data, {
+        get(target, prop){
+            return Reflect.get(target, prop)
+        },
+        set(target, prop, value){
+            Reflect.set(target, prop, value)
+            bindValue(target, prop)
+        }
+    })
+</script>
+</html>

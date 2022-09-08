@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  const name = 'window'
+  function foo(){
+    console.log(this.name, arguments)
+    // return this.name
+  }
+  const obj = {
+    name: 'obj'
+  }
+
+  Function.prototype.zxCall = function (thisArg, ...args){
+    if(thisArg !== undefined && thisArg !== null){ thisArg = Object(thisArg) }
+    else {
+      thisArg = globalThis
+    }
+    const symbol = Symbol('key')
+    thisArg[symbol] = this
+    const result = thisArg[symbol](...args)
+    delete  thisArg[symbol]
+    return result
+  }
+
+  foo.call('123', 1,2,3)
+  foo.zxCall('123', 1,2,3)
+
+</script>
+</body>
+</html>

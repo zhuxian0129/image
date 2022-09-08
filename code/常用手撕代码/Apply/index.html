@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    const name = 'window'
+    function foo(){
+        console.log(this.name, arguments)
+        // return this.name
+    }
+    const obj = {
+        name: 'obj'
+    }
+    // apply this绑定；参数
+    Function.prototype.zxApply = function (thisArg, arg = []){
+        if(thisArg !== undefined && thisArg !== null) { thisArg = Object(thisArg) }
+        else{
+            thisArg = globalThis
+        }
+        const symbol = Symbol('key')
+        thisArg[symbol] = this
+        const result = thisArg[symbol](...arg)
+        delete thisArg[symbol]
+        return result
+    }
+
+    const a = foo.apply(null, [1,2,3])
+    const b = foo.zxApply(null, [1,2,3])
+    console.log(a,b)
+</script>
+</html>

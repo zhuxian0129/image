@@ -49,18 +49,36 @@
 </body>
 
 <script>
-  localStorage.setItem('hah', 'xixi')
+/*  localStorage.setItem('hah', 'xixi')
   const btn = document.querySelector('button')
   // const img = document.querySelector('img')
   btn.onclick = function(){
     localStorage.setItem('haha', 12345)
-  }
+  }*/
   /* img.onload = function(e){
     console.log(e)
   }
   img.onerror = function(e){
     console.log('error',e)
   } */
+
+  class C {
+    constructor() { this.num = Math.random();
+    }
+    rand() {
+      console.log( "Random: " + this.num );
+    }
+  }
+
+  // console.log(Object.prototype.toString.call('123'))
+
+  // console.log(Object.prototype)
+  // console.log(Object.__proto__)
+  // console.log(Object.toString.call('123'))
+
+Object.__proto__.a = 456
+Object.prototype.a = 123
+console.log(Object.a)
 </script>
 
 </html>

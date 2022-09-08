@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <input type="text" placeholder="请输入">
+  <button>确定</button>
+  <button>取消</button>
+</body>
+<script>
+  function debounce(fn = ()=>{}, waiting = 300){
+    let timer = null;
+    function _debounce(...args){
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(()=> {
+            fn.apply(this, args)
+            timer = null
+        }, waiting)
+    }
+
+      _debounce.cancel = function (){
+        if(timer) clearTimeout(timer)
+    }
+    return _debounce
+  }
+
+</script>
+<script>
+  const btn = document.querySelectorAll('button')
+  const input = document.querySelector('input')
+  function inputChange(event){
+      console.log(this, event)
+  }
+
+  const inputChangeHandler = debounce(inputChange, 1000)
+  input.addEventListener('input', inputChangeHandler)
+  btn[1].onclick = inputChangeHandler.cancel
+</script>
+</html>
