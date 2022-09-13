@@ -80,3 +80,33 @@ a.name = 'a1'
 console.log(b.__proto__)
 
 
+var name = 222
+var a = {
+  name: 111,
+  say() {
+    console.log(this.name)
+  }
+}
+var fun = a.say
+fun() // 222
+a.say() // 111
+
+var b = {
+  name: 333,
+  say() {
+    fun()
+  }
+}
+b.say(a.say) // 222
+b.say = a.say
+b.say() // 333
+
+var obj = {
+  birth: 1990,
+  getAge() {
+    var b = this.birth
+    var fn = () => new Date.getFullYear() - this.birth
+    return fn()
+  }
+}
+obj.getAge()

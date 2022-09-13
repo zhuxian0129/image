@@ -14,7 +14,13 @@
         // return this.name
     }
     const obj = {
-        name: 'obj'
+        name: 'obj',
+        foo(){
+            console.log(this, this.name)
+        }
+    }
+    const obj1 = {
+        name: 'obj1'
     }
     // apply this绑定；参数
     Function.prototype.zxApply = function (thisArg, arg = []){
@@ -22,6 +28,7 @@
         else{
             thisArg = globalThis
         }
+        console.log(thisArg)
         const symbol = Symbol('key')
         thisArg[symbol] = this
         const result = thisArg[symbol](...arg)
@@ -29,8 +36,11 @@
         return result
     }
 
-    const a = foo.apply(null, [1,2,3])
-    const b = foo.zxApply(null, [1,2,3])
-    console.log(a,b)
+  /*   const a = foo.apply(null, [1,2,3])
+    const b = foo.zxApply(null, [1,2,3]) */
+
+    const c = obj.foo.zxApply(obj1)
+    const d = obj.foo.apply(obj1)
+    console.log(c,d)
 </script>
 </html>
