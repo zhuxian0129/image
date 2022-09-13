@@ -42,8 +42,41 @@ o.foo(); // 3
 (p.foo = o.foo)(); // 2
 
 
-var myObject = {}
 
-// 原型链
-myObject.prototype.foo = 1
-// 原型链上层
+function Foo(name) {
+  this.name = name
+}
+
+Foo.prototype.myName = function () {
+  return this.name
+}
+
+function Bar(name, label) {
+  Foo.call(this, name)
+  this.label = label
+}
+
+Bar.prototype = Object.create(Foo.prototype)
+
+Bar.prototype.myLable = function () {
+  return this.label
+}
+
+var a = new Bar('a', 'obj a')
+
+a.myName()
+a.myLable()
+
+
+
+var a = {
+  name: 'a'
+}
+
+var b = Object.create(a)
+
+a.name = 'a1'
+
+console.log(b.__proto__)
+
+
