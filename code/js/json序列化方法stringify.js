@@ -24,7 +24,7 @@ const jsonStr3 = JSON.stringify(obj, function (key,value){
 
 // stringify 第三个参数
 const jsonStr4 = JSON.stringify(obj, null, 4)
-const jsonStr4 = JSON.stringify(obj, null, '----')
+const jsonStr5 = JSON.stringify(obj, null, '----')
 
 // 如果 要转换的对象中存在 toJSON 方法，会直接将 toJSON 的返回值，作为转换的结果返回
 const obj1 = {
@@ -33,4 +33,4 @@ const obj1 = {
     return 123
   }
 }
-const jsonStr5 = JSON.stringify(obj1) // 123
+const jsonStr6 = JSON.stringify(obj1) // 123
