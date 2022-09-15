@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 解析路径
+  const bailRE = /[^\w.$]/
+  function parsePath(path){
+    if(bailRE.test(path)){
+      return
+    }
+    const segments = path.split('.')
+    return function(obj){
+      segments.map(item => {
+        if(!obj) return
+        obj = obj[item]
+      })
+      return obj
+    }
+  }
+
+  // 封装 对象变化侦测
+  /* function defineReactive(data, key, val){
+    Object.defineProperty(data, key, {
+      enumerable: true,
+      configurable: true,
+      get(){
+        return val
+      },
+      set(newVal){
+        if(val === newVal) return
+        val = newVal
+      }
+    })
+  } */
+
+ /*  // 进一步  收集依赖（发生在getter内）
+  function defineReactive(data, key, val) {
+    let dep = [] // 依赖收集容器
+    Object.defineProperty(data, key, {
+      enumerable: true,
+      configurable: true,
+      get() {
+        // 新增
+        dep.push()
+        return val
+      },
+      set(newVal) {
+        if (val === newVal) return
+        // 数据发生变化，通知对应位置，发生变化
+        dep.forEach(item => {
+          item(newVal, val)
+        })
+        val = newVal
+      }
+    })
+  } */
+
+  // 封装类 用于收集依赖，删除依赖，更新数据
+  // window.target：我们收集的依赖。
+  // 依赖是什么：当属性发生变化后，通知到的东西
+  class Dep {
+    constructor() {
+      this.subs = new Set() // 使用 set 结构，避免添加重复的依赖
+    }
+
+    addSub(sub) { // 新增
+      this.subs.add(sub)
+    }
+
+    removeSub(sub) { // 删除
+      this.subs.delete(sub)
+    }
+
+    depend() { // 执行依赖函数，进而收集依赖
+      if(window.target) this.addSub(window.target)
+    }
+
+    notify(){ // 发通知，更新数据
+      this.subs.forEach(sub => {
+        sun.update()
+      })
+    }
+  }
+
+  // 改造 defineReactive 
+  function defineReactive(data, key, val){
+    let dep = new Dep() // 创建
+    Object.defineProperty(data, key, {
+      enumerable: true,
+      configurable: true,
+      get(){
+        dep.depend()
+        return val
+      },
+      set(newVal){
+        if(val === newVal) return
+        val = newVal
+        dep.notify()
+      }
+    })
+  }
+
+  // watcher 数据变化时，通知该它，然后由它再通知其他地方
+  // watcher 经典使用案例：
+  vm.$watch('a.b.c', function(newVal, oldVal){
+    // do something
+  })
+
+  class Watcher{
+    constructor(vm, expOrFn, cb){
+      this.vm = vm
+      // 执行this.getter() 读取 data.a.b.c的内容
+      this.getter = parsePath(expOrFn) // 解析key
+      this.cb = cb
+      this.value = this.get()
+    }
+
+    get(){
+      window.target = this
+      let value = this.getter.call(this.vm, this.vm)
+      window.target = undefined
+      return value
+    }
+
+    update(){
+      const oldValue = this.value
+      this.value = this.get()
+      this.cb.call(this.vm, this.value, oldValue)
+    }
+  }  
+</script>
+
+</html>
