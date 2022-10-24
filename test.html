@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,
+    td {
+      border: 1px solid #000;
+      text-align: center;
+      border-spacing: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="qrcode"></div>
+  <table>
+    <tbody>
+      <tr>
+        <td>户主</td>
+        <td colspan="5">博士生</td>
+      </tr>
+      <tr>
+        <td>身份证号码</td>
+        <td colspan="5">124576197806124532</td>
+      </tr>
+      <tr>
+        <td>名字</td>
+        <td>性别</td>
+        <td>身份证号码</td>
+        <td>与户主关系</td>
+        <td>份额（股份）数</td>
+        <td>分配时间</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td rowspan="3">资产情况</td>
+        <td>资产类型</td>
+        <td>经营性资产-库存物资</td>
+      </tr>
+      <tr>
+        <td>规格型号</td>
+        <td colspan='2'>不知道不知道不知道</td>
+      </tr>
+      <tr>
+        <td>账面数量</td>
+        <td colspan="2">是不是傻是不是傻</td>
+      </tr>
+      <tr>
+        <td>业务范围</td>
+        <td colspan='3'>还带个售后单号好的好的</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+<script>
+  const data = [
+    { name: '皇帝柑', gender: 0, IDCard: '42334199801248765', part: '20%', relationship: '父女', date: '2020-10-03' },
+    { name: '压缩包', gender: 1, IDCard: '109238196512179235', part: '5%', relationship: '祖孙', date: '2020-10-03' },
+    { name: '荣盛城', gender: 0, IDCard: '42334199801248765', part: '20%', relationship: '夫妻', date: '2020-10-03' },
+    { name: '扬州市', gender: 1, IDCard: '42334199801248765', part: '20%', relationship: '兄弟', date: '2020-10-03' },
+  ]
+  const gender = ['男', '女']
+  let html = ''
+  const tbody = document.querySelector('tbody')
+  data.map((item, index) => {
+    const tr = document.createElement('tr')
+    let td = `<td>${item.name}</td>
+    <td>${gender[item.gender]}</td>
+    <td>${item.IDCard}</td>
+    <td>${item.relationship}</td>
+    <td>${item.part}</td>
+    <td>${item.date}</td>`
+    tr.innerHTML = td
+    tbody.appendChild(tr)
+  }) 
+</script>
+<!-- <script src="./jquery-3.6.1.min.map"></script> -->
+<script src="./qrcode.min.js"></script>
+<script>
+  /*   function utf16to8(str) {
+      var out, i, len, c;
+      out = "";
+      len = str.length;
+      for (i = 0; i < len; i++) {
+        c = str.charCodeAt(i);
+        if ((c >= 0x0001) && (c <= 0x007F)) {
+          out += str.charAt(i);
+        } else if (c > 0x07FF) {
+          out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+          out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+          out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+        } else {
+          out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+          out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+        }
+      }
+      return out;
+    }
+  
+    $('#qrcode').qrcode({
+      render: "table", //设置渲染方式(有两种方式 table和canvas，默认是canvas）  
+      text: utf16to8("https://www.baidu.com"),
+      width: 161,
+      height: 161,
+      background: "#ffffff", //背景颜色  
+      foreground: "#000000", //前景颜色
+      correctLevel: 0, //纠错等级 
+    }); */
+  // console.log(QRCode)
+  // new QRCode(document.getElementById('qrcode'), 'your content');
+  // 设置参数方式
+  var qrcode = new QRCode('qrcode', {
+    text: 'your content',
+    width: 256,
+    height: 256,
+    colorDark: '#000000', //前景色
+    colorLight: ' #ffffff ', //背景色
+    correctLevel: QRCode.CorrectLevel.H  //纠错等级
+  });
+  // 使用 API
+  qrcode.clear();  //清除二维码。（仅在不支持 Canvas 的浏览器下有效）
+  qrcode.makeCode(`${window.location.origin}/code/html/id.html?id=89289893`);   //设置二维码内容，生成二维码
+</script>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content{
+      width: 1190px;
+      margin: 0 auto;
+    }
+    .wrapper{
+      margin-right: -10px;
+      /* overflow: hidden; */
+    }
+    .item {
+      width: 290px;
+      float: left;
+      background-color: aqua;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .left{
+      height: 370px;
+    }
+    .right{
+      height: 180px;
+    }
+    /* .wrapper+div{
+      clear: both;
+    } */
+    .clear_fix::after{
+      clear: both;
+      display: block;
+      content: '';
+
+      /* 浏览器兼容性 */
+      visibility: hidden;
+      height: 0;
+    }
+    .clear_fix{
+      zoom: 1; /* 兼容ie6/7 */
+    }
+    .other{
+      min-width: 1190px;
+      height: 200px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="wrapper clear_fix">
+      <div class="left item"></div>
+      <div class="left item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+      <div class="right item"></div>
+    </div>
+    <div></div>
+  </div>
+  <div class="other">123</div>
+</body>
+</html>
