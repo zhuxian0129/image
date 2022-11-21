@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      background-color: aqua;
+    }
+    .box1{
+      width: 50px;
+      height: 50px;
+      background-color: rgb(29, 167, 109);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box1"></div>
+  </div>
+</body>
+<script>
+  const box = document.querySelector('.box')
+  const box1 = document.querySelector('.box1')
+
+  // box.onclick = function(){
+  //   console.log('发生了点击事件')
+  // }
+
+  // divEl.oncontextmenu = function(event){
+  //   console.log('点击了右键')
+  //   event.preventDefault()
+  // }
+
+  // box.onmouseenter = function(){
+  //   console.log('进入box')
+  // }
+  // box1.onmouseenter = function(){
+  //   console.log('进入box1')
+  // }
+
+  box.onmouseover = function(){
+    console.log('进入box')
+  }
+ /*  box1.onmouseover = function(){
+    console.log('进入box1')
+  } */
+</script>
+</html>
