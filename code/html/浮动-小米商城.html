@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		body{
+			background-color: #f5f5f5;
+		}
+		.content{
+			width: 1226px;
+			margin: 0 auto;
+		}
+		.wrapper{
+			margin-left: -14px;
+		}
+		.header{
+			position: relative;
+		}
+		.header .header-classify{
+			position: absolute;
+			right: 14px;
+			bottom: 0;
+		}
+		.header .header-classify .item{
+			display: inline-block;
+		}
+		.header .header-classify .item:hover{
+			cursor: pointer;
+		}
+		.header .header-classify .hot{
+			margin-right: 14px;
+			color: #f00;
+			line-height: 16px;
+			border-bottom: 1px solid #f00;
+		}
+		.box .item{
+			width: 234px;
+			float: left;
+			margin-right: 14px;
+			margin-bottom: 14px;
+			background-color: #fff;
+			transition: all .2s ease-in;
+		}
+		.box .item:hover{
+			transform: translateY(-2px);
+			box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+			cursor: pointer;
+		}
+		.box .right{
+			height: 614px;
+		}
+		.box .left{
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="wrapper">
+			<div class="header">
+				<h3>智能穿戴</h3>
+				<div class="header-classify">
+					<span class="item hot">热门</span>
+					<span class="item dress">穿戴</span>
+				</div>
+			</div>
+			<div class="box">
+				<div class="item item1 right"></div>
+				<div class="item item2 left"></div>
+				<div class="item item3 left"></div>
+				<div class="item item4 left"></div>
+				<div class="item item5 left"></div>
+				<div class="item item6 left"></div>
+				<div class="item item7 left"></div>
+				<div class="item item8 left"></div>
+				<div class="item item9 left"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	function Student(name, age, height){
+		this.name = name
+		this.age = age
+		this.height = height
+		this.running = function (){
+			console.log('running')
+		}
+
+		return {}
+	}
+
+	const stu1 = new Student('aa', 12, 1.82)
+	// console.log(stu1.__proto__ === Student.prototype)
+	console.log(stu1)
+</script>
+</body>
+</html>
