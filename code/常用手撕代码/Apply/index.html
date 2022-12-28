@@ -42,5 +42,15 @@
     const c = obj.foo.zxApply(obj1)
     const d = obj.foo.apply(obj1)
     console.log(c,d)
+
+    Function.prototype.zxapply = function(thisArg, arg = []){
+        if(thisArg !== undefined || thisArg !== null) thisArg = Object(thisArg)
+        else thisArg = globalThis
+        const s = Symbol()
+        thisArg[s] = this
+        const result = thisArg[s](...arg)
+        delete thisArg[s]
+        return s
+    }
 </script>
 </html>

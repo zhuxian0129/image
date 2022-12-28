@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 600px;
+      margin: 40px auto;
+    }
+
+    .list {
+      overflow: hidden;
+      height: 120px;
+    }
+
+    .list ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .list li {
+      height: 30px;
+      line-height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>诗词推荐</h1>
+    <div class="list">
+      <ul>
+        <li>1.水调歌头·隐括杜牧之齐山诗</li>
+        <li>2.初夏</li>
+        <li>3.皇矣</li>
+        <li>4.新雁过妆楼·中秋后一夕李方庵月庭延客命小妓过新水令坐间赋词</li>
+        <li>5.临江仙引·上国</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label"><span class="text-red">*</span>身份证号</label>
+    <div class="col-sm-4">
+      <input type="text" id="idCard" name="idCard" onblur="blurFn()" class="form-control" value="{{idCard}}"
+        required="true" style="margin-bottom: 10px;">
+    </div>
+    <label class="col-sm-2 control-label"> 状态</label>
+    <div class="col-sm-4">
+      <input class="form-control box-inp1 select2" style="width: 100%;border-bottom-width: 0px" name="workstate"
+        type="hidden" data-szw="wdg-select2" value="{{workstate}}" data-aload="m://gg.dict:SZ_DICT.PM_JZZT@" />
+
+    </div>
+  </div>
+</body>
+<script>
+  const listBox = document.querySelector('.list');
+  listBox.innerHTML += listBox.innerHTML;
+  listBox.scrollTop = 0;
+  const speed = 50;
+  let counter = 0;
+
+  const callback = () => {
+    if (listBox.scrollTop >= listBox.scrollHeight / 2) {
+      counter = 0;
+      listBox.scrollTop = counter;
+    } else {
+      listBox.scrollTop = ++counter;
+    }
+  }
+
+  let timer = setInterval(callback, speed);
+
+
+  listBox.addEventListener('mouseover', () => {
+    clearInterval(timer);
+  });
+
+  listBox.addEventListener('mouseout', () => {
+    timer = setInterval(callback, speed);
+  });
+</script>
+
+</html>

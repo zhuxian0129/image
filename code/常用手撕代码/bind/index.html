@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  Function.prototype.zxbind = function (thisArg, ...args1) {
+    if (thisArg !== undefined || thisArg !== null) thisArg = Object(thisArg)
+    else thisArg = globalThis
+
+    return (...args2) => {
+      const s = Symbol()
+      thisArg[s] = this
+      const result = thisArg[s](...args1, ...args2)
+      // delete thisArg[s]
+      return result
+    }
+  }
+</script>
+
+</html>
