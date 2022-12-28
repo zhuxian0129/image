@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .crumbs {
+      height: 63px;
+      line-height: 63px;
+    }
+
+    .active {
+      color: #000;
+    }
+
+    .classify {
+      padding: 0 24px;
+      font-size: 12px;
+      background-color: #fff;
+    }
+
+    .classify .row {
+      display: flex;
+      line-height: 48px;
+    }
+
+    .classify .title {
+      width: 100px;
+      color: #C0C0C0;
+    }
+
+    .classify .list {
+      display: flex;
+    }
+
+    .list .item {
+      width: 120px;
+      cursor: pointer;
+    }
+
+    .list .item.active {
+      color: #cf0a2c;
+      font-weight: 600;
+    }
+
+    .list .item:hover {
+      color: #dc5757;
+    }
+
+    .product {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    .product .item {
+      box-sizing: border-box;
+      width: 291px;
+      background-color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .product .product-image {
+      width: 220px;
+      margin: 0 auto;
+    }
+    .product-image img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <!--  导航  -->
+  <div class="crumbs">
+    <a href="">首页</a>
+    <span>&gt;</span>
+    <a href="" class="active">笔记本</a>
+  </div>
+
+  <!--  分类  -->
+  <div class="classify">
+    <div class="row category">
+      <div class="title">分类：</div>
+      <ul class="list category-list">
+        <li class="item active">笔记本</li>
+        <li class="item">MateBook E系列</li>
+        <li class="item">MateBook D系列</li>
+        <li class="item">MateBook X系列</li>
+        <li class="item">华为显示器系列</li>
+        <li class="item">MateBook B系列</li>
+        <li class="item">MateBook数字...</li>
+      </ul>
+    </div>
+    <div class="row discount">
+      <div class="title">服务优惠：</div>
+      <ul class="list discount-list">
+        <li class="item active">仅看有货</li>
+        <li class="item">分期免息</li>
+        <li class="item">优惠商品</li>
+      </ul>
+    </div>
+    <div class="row sort">
+      <div class="title">排序：</div>
+      <ul class="list category-list">
+        <li class="active item">综合</li>
+        <li class="item">最新</li>
+        <li class="item">评论数</li>
+        <li class="item">价格</li>
+      </ul>
+    </div>
+  </div>
+
+  <!--  产品  -->
+  <div class="product">
+    <div class="item">
+      <div class="product-image">
+        <img alt="" draggable="false"
+             src="https://res.vmallres.com/pimages/uomcdn/CN/pms/202210/gbom/6941487272969/800_800_3F569A0F0BD7A75ED877115F0FB114E5mp.png">
+      </div>
+      <div class="productTitle">HUAWEI MateBook 14/14s</div>
+      <div class="productDect">14*护眼全面屏</div>
+      <div class="productPrice">￥7099</div>
+      <div class="detail">
+        <span class="evaluation">4788人评价</span>
+        <span class="positive-rate">95%好评</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="product-image">
+        <img alt="" draggable="false"
+             src="https://res.vmallres.com/pimages/uomcdn/CN/pms/202210/gbom/6941487272969/800_800_3F569A0F0BD7A75ED877115F0FB114E5mp.png">
+      </div>
+      <div class="productTitle">HUAWEI MateBook 14/14s</div>
+      <div class="productDect">14*护眼全面屏</div>
+      <div class="productPrice">￥7099</div>
+      <div class="detail">
+        <span class="evaluation">4788人评价</span>
+        <span class="positive-rate">95%好评</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="product-image">
+        <img alt="" draggable="false"
+             src="https://res.vmallres.com/pimages/uomcdn/CN/pms/202210/gbom/6941487272969/800_800_3F569A0F0BD7A75ED877115F0FB114E5mp.png">
+      </div>
+      <div class="productTitle">HUAWEI MateBook 14/14s</div>
+      <div class="productDect">14*护眼全面屏</div>
+      <div class="productPrice">￥7099</div>
+      <div class="detail">
+        <span class="evaluation">4788人评价</span>
+        <span class="positive-rate">95%好评</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="product-image">
+        <img alt="" draggable="false"
+             src="https://res.vmallres.com/pimages/uomcdn/CN/pms/202210/gbom/6941487272969/800_800_3F569A0F0BD7A75ED877115F0FB114E5mp.png">
+      </div>
+      <div class="productTitle">HUAWEI MateBook 14/14s</div>
+      <div class="productDect">14*护眼全面屏</div>
+      <div class="productPrice">￥7099</div>
+      <div class="detail">
+        <span class="evaluation">4788人评价</span>
+        <span class="positive-rate">95%好评</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="./js/productList.js"></script>
+<script>
+  const productEl = document.querySelector('.product')
+</script>
+</html>

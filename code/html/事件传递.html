@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .sidebar{
+      position: fixed;
+      right: 20px;
+      bottom: 30px;
+    }
+    .item{
+      position: relative;
+      background-color: #7a6e6e;
+      height: 35px;
+      margin-bottom: 1px;
+      border-radius: 3px;
+    }
+    .icon{
+      display: inline-block;
+      width: 35px;
+      height: 100%;
+      background-image: url("../../img/toolbars.png");
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+    span{
+      position: absolute;
+      right: 35px;
+      z-index: -1;
+      width: 0;
+      border-radius: 3px 0 0 3px;
+      background-color: #7a6e6e;
+      white-space: nowrap;
+
+      color: #fff;
+      font-size: 12px;
+      line-height: 35px;
+      text-align: center;
+      cursor: pointer;
+
+      transition: width 0.2s ease;
+    }
+    .item:hover, .item:hover span{
+      background-color: #CA4040;
+    }
+  </style>
+  <style>
+    /*.box{
+      width: 300px;
+      height: 300px;
+      background-color: #CA4040;
+    }
+    .box1{
+      width: 50px;
+      height: 50px;
+      background-color: #4390EE;
+    }*/
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="item">
+      <i class="icon"></i>
+      <span class="name">购物车</span>
+    </div>
+    <div class="item">
+      <i class="icon"></i>
+      <span class="name">收藏</span>
+    </div>
+    <div class="item">
+      <i class="icon"></i>
+      <span class="name">限时活动</span>
+    </div>
+    <div class="item">
+      <i class="icon"></i>
+      <span class="name">大礼包</span>
+    </div>
+  </div>
+  <!--<div class="box">
+    <div class="box1"></div>
+  </div>-->
+</body>
+<script>
+  const iconEls = document.querySelectorAll('.icon')
+  const sidebar = document.querySelector('.sidebar')
+  // const box = document.querySelector('.box')
+
+  for(let i = 0; i < iconEls.length; i++){
+    iconEls[i].style.backgroundPosition = `-48px -${50*i}px`
+  }
+
+  sidebar.addEventListener('mouseover', function (event){
+    console.log(event.target)
+  })
+  sidebar.addEventListener('mouseout', function (event){
+    // console.log(event)
+  })
+
+  /*box.addEventListener('mouseover', function (event){
+    console.log(event.target)
+  }, true)*/
+</script>
+</html>

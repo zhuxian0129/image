@@ -1,0 +1,22 @@
+body, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 14px;
+    background-color: #f1f3f5;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #333333;
+}
+
+img{
+    vertical-align: top;
+}
