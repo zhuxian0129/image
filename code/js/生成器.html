@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  function* foo() {
+    console.log(111)
+    yield 123
+    console.log(222)
+    yield 456
+    console.log(333)
+    // return 789
+  }
+
+  const generator = foo() // 函数在默认执行时，返回一个生成器对象
+
+  // generator.next() // 111 first
+  // generator.next() // 222 second
+  console.log(generator.next())
+  console.log(generator.next())
+  console.log(generator.next())
+
+  const names = ['a', 'b', 'c', 'd']
+  const nums = [1, 2, 3, 4, 5]
+
+  function* createArrayTterator(arr) {
+    for (let i of arr) {
+      yield i
+    }
+  }
+
+  const name = createArrayTterator(names)
+  console.log(name.next())
+  console.log(name.next())
+  console.log(name.next())
+  console.log(name.next())
+  console.log(name.next())
+</script>
+
+</html>
